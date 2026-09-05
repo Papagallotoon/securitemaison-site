@@ -46,9 +46,15 @@ export const CATEGORIES: Record<string, Category> = {
     color: "#6B5B95",
     blurb: "Ce qui continue de fonctionner quand l'électricité ou internet s'arrêtent.",
   },
+  family: {
+    slug: "family",
+    label: "Protection enfant",
+    color: "#C2477A",
+    blurb: "Prises, angles, tiroirs. Empêcher les petits accidents avant qu'ils n'arrivent.",
+  },
 };
 
-export const CATEGORY_ORDER = ["perimeter", "detection", "response", "resilience"] as const;
+export const CATEGORY_ORDER = ["perimeter", "detection", "response", "resilience", "family"] as const;
 
 export type CategoryKey = keyof typeof CATEGORIES;
 
@@ -96,6 +102,10 @@ export type ArticleMeta = {
   image?: string;
   imageAlt?: string;
   imageDark?: boolean;
+  /** Short YouTube déjà publié sur ce même sujet — lien affiché en tête
+   *  d'article, pas d'embed (les Shorts sont verticaux, mal adaptés à un
+   *  cadre 16:9). */
+  youtubeUrl?: string;
   facts: { value: string; label: string }[];
   blocks: Block[];
 };
@@ -125,6 +135,7 @@ export const ARTICLES: ArticleMeta[] = [
     updated: "Mis à jour le 5 septembre 2026",
     image: "/images/products/eufy-solocam-s340.jpg",
     imageAlt: "Caméra de sécurité extérieure connectée fixée sur un mur",
+    youtubeUrl: "https://www.youtube.com/shorts/0i7MmumCzVw",
     facts: [
       { value: "5", label: "caméras comparées" },
       { value: "22 € — 281 €", label: "fourchette de prix" },
@@ -238,6 +249,7 @@ export const ARTICLES: ArticleMeta[] = [
     updated: "Mis à jour le 5 septembre 2026",
     image: "/images/products/steinel-xled-home2.jpg",
     imageAlt: "Projecteur extérieur connecté fixé sur une façade",
+    youtubeUrl: "https://www.youtube.com/shorts/WXbwmVmTEOA",
     facts: [
       { value: "5", label: "projecteurs comparés" },
       { value: "38 € — 111 €", label: "fourchette de prix" },
@@ -351,6 +363,7 @@ export const ARTICLES: ArticleMeta[] = [
     updated: "Mis à jour le 5 septembre 2026",
     image: "/images/products/aqara-motion-sensor-p1.jpg",
     imageAlt: "Détecteur de mouvement connecté posé sur une étagère",
+    youtubeUrl: "https://www.youtube.com/shorts/NopBrwbDo_c",
     facts: [
       { value: "5", label: "détecteurs comparés" },
       { value: "18 € — 50 €", label: "fourchette de prix" },
@@ -464,6 +477,7 @@ export const ARTICLES: ArticleMeta[] = [
     updated: "Mis à jour le 5 septembre 2026",
     image: "/images/products/nuki-smart-lock-pro.jpg",
     imageAlt: "Serrure connectée posée sur une porte d'entrée",
+    youtubeUrl: "https://www.youtube.com/shorts/7asvh-lBXpc",
     facts: [
       { value: "5", label: "produits comparés" },
       { value: "149 € — 503 €", label: "fourchette de prix" },
@@ -583,6 +597,7 @@ export const ARTICLES: ArticleMeta[] = [
     updated: "Mis à jour le 5 septembre 2026",
     image: "/images/products/ring-video-doorbell.jpg",
     imageAlt: "Sonnette vidéo connectée installée à côté d'une porte d'entrée",
+    youtubeUrl: "https://www.youtube.com/shorts/2sXlkJhrX3Y",
     facts: [
       { value: "5", label: "sonnettes comparées" },
       { value: "100 € — 130 €", label: "fourchette de prix" },
@@ -701,6 +716,7 @@ export const ARTICLES: ArticleMeta[] = [
     updated: "Mis à jour le 5 septembre 2026",
     image: "/images/products/igloohome-smart-keybox-3.jpg",
     imageAlt: "Boîte à clés connectée fixée près d'une porte d'entrée",
+    youtubeUrl: "https://www.youtube.com/shorts/D1ZOmm3pzMM",
     facts: [
       { value: "5", label: "boîtes à clés comparées" },
       { value: "80 € — 220 €", label: "fourchette de prix" },
@@ -790,6 +806,343 @@ export const ARTICLES: ArticleMeta[] = [
       {
         k: "quiz",
         title: "Votre périmètre est-il votre couche la plus faible ?",
+        text: "Sept questions notent votre périmètre, votre détection, votre réaction et votre résilience, et vous disent où investir en premier.",
+      },
+      { k: "h2", text: "Comment on choisit" },
+      { k: "method", items: METHOD_ITEMS },
+    ],
+  },
+
+  {
+    slug: "caches-prises-securite-enfant",
+    category: "family",
+    kind: "comparison",
+    kicker: "Comparatif",
+    title: "Les 5 meilleurs caches-prises de sécurité pour protéger les enfants",
+    excerpt:
+      "Bébé qui rampe, tout-petit curieux : ces caches-prises simples et efficaces empêchent les enfants d'introduire un objet dans une prise électrique.",
+    standfirst:
+      "Pas besoin d'électronique ici : juste du plastique bien pensé qui tient en place. Cinq packs, de 2,90 € à 8,99 €, pour équiper toute une maison sans y passer l'après-midi.",
+    meta: "5 produits comparés",
+    date: "5 sept.",
+    number: 407,
+    readingTime: "5 min de lecture",
+    updated: "Mis à jour le 5 septembre 2026",
+    image: "/images/products/cache-prise-universal-24pcs.jpg",
+    imageAlt: "Caches-prises de sécurité installés sur une prise électrique",
+    youtubeUrl: "https://www.youtube.com/shorts/heUGA4maffo",
+    facts: [
+      { value: "5", label: "packs comparés" },
+      { value: "2,90 € — 8,99 €", label: "fourchette de prix" },
+      { value: "24", label: "prises couvertes par le pack le plus complet" },
+    ],
+    blocks: [
+      {
+        k: "p",
+        text: "Un enfant qui rampe explore avec les mains et la bouche, et une prise électrique à hauteur de vue est une tentation immédiate. La bonne nouvelle : c'est l'un des équipements de sécurité domestique les moins chers et les plus simples à poser. La question n'est pas laquelle acheter, mais système à clé ou collage définitif.",
+      },
+      { k: "h2", text: "Notre sélection" },
+      {
+        k: "pick",
+        rank: "01",
+        name: "Safety 1st Cache Prises avec Clés, 12 Pièces",
+        price: "2,90 €",
+        badge: "Meilleur premier prix",
+        tone: "ok",
+        verdict:
+          "Système à clé difficile à retirer pour un enfant, d'une marque reconnue en puériculture, pour un prix imbattable.",
+        pros: ["Prix imbattable pour une marque reconnue en puériculture", "Système à clé, difficile à retirer pour un enfant"],
+        cons: ["Clé à conserver à portée de main pour un adulte pressé"],
+        href: "https://www.amazon.fr/dp/B01LRS24E8?tag=secure012de-21",
+        image: "/images/products/cache-prise-safety1st-12pcs.jpg",
+        imageAlt: "Safety 1st Cache Prises avec Clés, 12 Pièces",
+      },
+      {
+        k: "pick",
+        rank: "02",
+        name: "reer 32030, Lot de 10 Cache-Prises à Coller",
+        price: "6,99 €",
+        badge: "Le plus stable",
+        tone: "good",
+        verdict:
+          "Marque allemande spécialiste de la sécurité bébé, testée intensivement — pose par collage qui ne bouge pas une fois en place.",
+        pros: ["Marque allemande spécialiste de la sécurité bébé, testée intensivement", "Pose par collage, ne bouge pas une fois en place"],
+        cons: ["Collage définitif, plus difficile à retirer si besoin"],
+        href: "https://www.amazon.fr/dp/B08Y9SFZ1P?tag=secure012de-21",
+        image: "/images/products/cache-prise-reer-32030.jpg",
+        imageAlt: "reer 32030, Lot de 10 Cache-Prises à Coller",
+      },
+      {
+        k: "pick",
+        rank: "03",
+        name: "Dreambaby Cache-Prises avec Clés",
+        price: "7,31 €",
+        badge: "Retrait le plus facile",
+        tone: "good",
+        verdict:
+          "Marque néo-zélandaise très populaire en puériculture, avec un retrait facile pour un adulte grâce à la clé fournie.",
+        pros: ["Marque néo-zélandaise très populaire en puériculture", "Retrait facile pour un adulte grâce à la clé fournie"],
+        cons: ["Stock limité chez ce vendeur au moment de la vérification"],
+        href: "https://www.amazon.fr/dp/B0049GY2R8?tag=secure012de-21",
+        image: "/images/products/cache-prise-dreambaby-cles.jpg",
+        imageAlt: "Dreambaby Cache-Prises avec Clés",
+      },
+      {
+        k: "pick",
+        rank: "04",
+        name: "Cache Prise Bébé Electrique Universal, Lot de 24 (20+4)",
+        price: "8,49 €",
+        badge: "Le plus grand lot",
+        tone: "good",
+        verdict:
+          "24 unités, largement de quoi équiper toute la maison, compatibles avec les prises Schuko 10/16A standards françaises.",
+        pros: ["24 unités, largement de quoi équiper toute la maison", "Compatible prises Schuko 10/16A standards françaises"],
+        cons: ["Marque générique, finition moins soignée que Reer ou Safety 1st"],
+        href: "https://www.amazon.fr/dp/B07VPKFTS9?tag=secure012de-21",
+        image: "/images/products/cache-prise-universal-24pcs.jpg",
+        imageAlt: "Cache Prise Bébé Electrique Universal, Lot de 24",
+      },
+      {
+        k: "pick",
+        rank: "05",
+        name: "HOMYBABY Cache Prise Bébé Français, Pack x20 + E-book",
+        price: "8,99 €",
+        badge: "Sans clé ni adhésif",
+        tone: "ok",
+        verdict:
+          "Conçu spécifiquement pour les prises françaises type E, sans clé ni adhésif, livré avec un e-book de conseils sécurité bébé.",
+        pros: ["Conçu pour les prises françaises type E, sans clé ni adhésif", "Livré avec un e-book de conseils sécurité bébé"],
+        cons: ["Amovible facilement par un enfant plus grand et déterminé"],
+        href: "https://www.amazon.fr/dp/B0DWSZK3CR?tag=secure012de-21",
+        image: "/images/products/cache-prise-homybaby-20pcs.jpg",
+        imageAlt: "HOMYBABY Cache Prise Bébé Français, Pack x20",
+      },
+      { k: "h2", text: "Comment on choisit" },
+      { k: "method", items: METHOD_ITEMS },
+    ],
+  },
+
+  {
+    slug: "coffres-forts-connectes",
+    category: "perimeter",
+    kind: "comparison",
+    kicker: "Comparatif",
+    title: "Les 5 meilleurs coffres-forts connectés pour protéger vos objets de valeur",
+    excerpt:
+      "Ouverture par code ou application, alertes en cas d'effraction : notre sélection des meilleurs coffres-forts connectés pour la maison en 2026.",
+    standfirst:
+      "Du modèle électronique simple au coffre piloté par application avec alertes en direct, cinq coffres-forts pour protéger documents, bijoux et liquidités, de 46 € à 215 €.",
+    meta: "5 produits comparés",
+    date: "5 sept.",
+    number: 408,
+    readingTime: "6 min de lecture",
+    updated: "Mis à jour le 5 septembre 2026",
+    image: "/images/products/yale-yss250-connecte.jpg",
+    imageAlt: "Coffre-fort connecté posé dans un dressing",
+    youtubeUrl: "https://www.youtube.com/shorts/r88EZ_CqZaE",
+    facts: [
+      { value: "5", label: "coffres-forts comparés" },
+      { value: "46 € — 215 €", label: "fourchette de prix" },
+      { value: "2", label: "avec notifications d'ouverture à distance" },
+    ],
+    blocks: [
+      {
+        k: "p",
+        text: "Un coffre-fort sert à deux choses : ralentir quelqu'un qui n'a pas le code, et vous prévenir si quelqu'un essaie quand même. Les modèles électroniques simples font bien la première partie ; les modèles connectés font aussi la seconde.",
+      },
+      { k: "h2", text: "Notre sélection" },
+      {
+        k: "pick",
+        rank: "01",
+        name: "Yale Coffre-Fort Électronique Small YSV/200/DB2",
+        price: "45,72 €",
+        badge: "Meilleur premier prix",
+        tone: "ok",
+        verdict:
+          "Marque reconnue, serrure électronique à 100 000 combinaisons, format compact facile à fixer au sol ou en armoire.",
+        pros: ["Marque reconnue, serrure électronique 100 000 combinaisons", "Format compact facile à fixer au sol ou en armoire"],
+        cons: ["Pas de connexion app, code uniquement"],
+        href: "https://www.amazon.fr/dp/B0B4BJ4D63?tag=secure012de-21",
+        image: "/images/products/yale-ysv200-small.jpg",
+        imageAlt: "Yale Coffre-Fort Électronique Small YSV/200/DB2",
+      },
+      {
+        k: "pick",
+        rank: "02",
+        name: "Amazon Basics Coffre-Fort Électronique 14L",
+        price: "73,17 €",
+        badge: "Meilleur volume",
+        tone: "good",
+        verdict:
+          "Bon volume de rangement pour documents et bijoux, clavier numérique programmable, fixation murale/sol incluse.",
+        pros: ["Bon volume de rangement pour documents et bijoux", "Clavier numérique programmable, fixation murale/sol incluse"],
+        cons: ["Aucune alerte à distance en cas de tentative d'effraction"],
+        href: "https://www.amazon.fr/dp/B00UG9HB1Q?tag=secure012de-21",
+        image: "/images/products/amazon-basics-coffre-14l.jpg",
+        imageAlt: "Amazon Basics Coffre-Fort Électronique 14L",
+      },
+      {
+        k: "pick",
+        rank: "03",
+        name: "Xcase Coffre-Fort Connecté avec Lecteur d'Empreinte et Passerelle WiFi",
+        price: "119,95 €",
+        badge: "Le plus polyvalent",
+        tone: "good",
+        verdict:
+          "Ouverture par empreinte digitale, code ou passerelle WiFi, avec suivi et notifications d'ouverture à distance.",
+        pros: ["Ouverture par empreinte digitale, code ou passerelle WiFi", "Suivi et notifications d'ouverture à distance"],
+        cons: ["Configuration de la passerelle WiFi un peu technique"],
+        href: "https://www.amazon.fr/dp/B0CWQ9X632?tag=secure012de-21",
+        image: "/images/products/xcase-coffre-connecte-wifi.jpg",
+        imageAlt: "Xcase Coffre-Fort Connecté avec Lecteur d'Empreinte",
+      },
+      {
+        k: "pick",
+        rank: "04",
+        name: "Uplock Evolution Mini Coffre-Fort Portable Connecté",
+        price: "129,00 €",
+        badge: "Le plus portable",
+        tone: "good",
+        verdict:
+          "Alarme anti-arrachement intégrée et verrouillage interne robuste — idéal en complément du coffre principal, ou en déplacement.",
+        pros: ["Alarme anti-arrachement intégrée, très portable", "Verrouillage interne robuste, idéal en complément du coffre principal"],
+        cons: ["Capacité réduite, pensé pour petits objets de valeur"],
+        href: "https://www.amazon.fr/dp/B0C6TZMC4P?tag=secure012de-21",
+        image: "/images/products/uplock-evolution.jpg",
+        imageAlt: "Uplock Evolution Mini Coffre-Fort Portable Connecté",
+      },
+      {
+        k: "pick",
+        rank: "05",
+        name: "Yale Coffre-Fort Connecté Haute Sécurité 20,5L YSS/250/EB1",
+        price: "214,98 €",
+        badge: "Le plus complet",
+        tone: "good",
+        verdict:
+          "Contrôle d'accès à distance par application avec partage de codes et notifications d'ouverture en direct — le haut de gamme du comparatif.",
+        pros: ["Contrôle d'accès à distance par application, partage de codes", "Notifications d'ouverture en direct, marque premium reconnue"],
+        cons: ["Investissement élevé pour un coffre de cette taille"],
+        href: "https://www.amazon.fr/dp/B0BN33DTT2?tag=secure012de-21",
+        image: "/images/products/yale-yss250-connecte.jpg",
+        imageAlt: "Yale Coffre-Fort Connecté Haute Sécurité 20,5L",
+      },
+      {
+        k: "quiz",
+        title: "Votre périmètre est-il votre couche la plus faible ?",
+        text: "Sept questions notent votre périmètre, votre détection, votre réaction et votre résilience, et vous disent où investir en premier.",
+      },
+      { k: "h2", text: "Comment on choisit" },
+      { k: "method", items: METHOD_ITEMS },
+    ],
+  },
+
+  {
+    slug: "detecteurs-bris-vitre-fenetre",
+    category: "detection",
+    kind: "comparison",
+    kicker: "Comparatif",
+    title: "Les 5 meilleurs détecteurs de bris de vitre et capteurs de vibration",
+    excerpt:
+      "Ces capteurs détectent la vibration ou le bris d'une vitre avant même qu'un intrus n'entre chez vous, pour une alerte précoce sur vos fenêtres et baies vitrées.",
+    standfirst:
+      "Cinq capteurs pensés pour l'alerte précoce sur une fenêtre ou une baie vitrée, de 13 € pièce à un lot de 8 pour équiper toute une façade.",
+    meta: "5 produits comparés",
+    date: "5 sept.",
+    number: 409,
+    readingTime: "5 min de lecture",
+    updated: "Mis à jour le 5 septembre 2026",
+    image: "/images/products/detecteur-bris-vitre-frient-zigbee.jpg",
+    imageAlt: "Détecteur de bris de vitre fixé sur une fenêtre",
+    youtubeUrl: "https://www.youtube.com/shorts/IZ4Jrsu9JJg",
+    facts: [
+      { value: "5", label: "détecteurs comparés" },
+      { value: "13 € — 45 €", label: "fourchette de prix" },
+      { value: "1", label: "combine ouverture ET vibration en un boîtier" },
+    ],
+    blocks: [
+      {
+        k: "p",
+        text: "Un détecteur de bris de vitre alerte avant que l'intrus ait fini d'entrer, contrairement à un capteur d'ouverture qui ne réagit qu'une fois la fenêtre déjà ouverte. Ces cinq modèles couvrent l'essentiel des configurations, du capteur simple au lot pour équiper toute une façade.",
+      },
+      { k: "h2", text: "Notre sélection" },
+      {
+        k: "pick",
+        rank: "01",
+        name: "Nivian NVS-VIBRATION2, Détecteur sans Fil de Vibration et Bris de Vitre",
+        price: "12,99 €",
+        badge: "Meilleur premier prix",
+        tone: "ok",
+        verdict:
+          "Installation sans câble et portée jusqu'à 100 m, à un prix très accessible — fonctionne surtout en complément d'un système d'alarme Nivian.",
+        pros: ["Prix très accessible, installation sans câble", "Portée jusqu'à 100 m"],
+        cons: ["Fonctionne surtout en complément d'un système d'alarme Nivian 433 MHz"],
+        href: "https://www.amazon.fr/dp/B0FWCNQ7HB?tag=secure012de-21",
+        image: "/images/products/detecteur-bris-vitre-nivian.jpg",
+        imageAlt: "Nivian NVS-VIBRATION2",
+      },
+      {
+        k: "pick",
+        rank: "02",
+        name: "Smartwares SMA-40952, Alarme Capteur Bris de Vitre",
+        price: "17,97 €",
+        badge: "Le plus autonome",
+        tone: "good",
+        verdict:
+          "Marque néerlandaise reconnue en sécurité domestique, fonctionne de façon autonome sans hub ni abonnement.",
+        pros: ["Marque néerlandaise reconnue en sécurité domestique", "Fonctionne de façon autonome, sans hub ni abonnement"],
+        cons: ["Sirène locale uniquement, pas de notification smartphone"],
+        href: "https://www.amazon.fr/dp/B07QBDCJX6?tag=secure012de-21",
+        image: "/images/products/detecteur-bris-vitre-smartwares.jpg",
+        imageAlt: "Smartwares SMA-40952",
+      },
+      {
+        k: "pick",
+        rank: "03",
+        name: "frient Capteur de Vibration Zigbee",
+        price: "30,95 €",
+        badge: "Le plus paramétrable",
+        tone: "good",
+        verdict:
+          "Accéléromètre 3 axes avec 15 niveaux de sensibilité réglables, s'intègre à un écosystème domotique Zigbee.",
+        pros: ["Accéléromètre 3 axes, 15 niveaux de sensibilité réglables", "S'intègre à un écosystème domotique Zigbee (SmartThings, Homey)"],
+        cons: ["Nécessite un hub Zigbee compatible pour fonctionner"],
+        href: "https://www.amazon.fr/dp/B0FNF8VNNK?tag=secure012de-21",
+        image: "/images/products/detecteur-bris-vitre-frient-zigbee.jpg",
+        imageAlt: "frient Capteur de Vibration Zigbee",
+      },
+      {
+        k: "pick",
+        rank: "04",
+        name: "Daewoo Security WDV301, Contacteur Ouverture et Vibration 2-en-1",
+        price: "38,62 €",
+        badge: "2-en-1",
+        tone: "good",
+        verdict:
+          "Combine détection d'ouverture ET de vibration en un seul boîtier — alerte avant intrusion, sans abonnement requis.",
+        pros: ["Combine détection d'ouverture ET de vibration en un seul boîtier", "Alerte avant intrusion, sans abonnement requis"],
+        cons: ["Plus cher qu'un simple capteur de vibration seul"],
+        href: "https://www.amazon.fr/dp/B0FTFQTTP3?tag=secure012de-21",
+        image: "/images/products/detecteur-bris-vitre-daewoo-wdv301.jpg",
+        imageAlt: "Daewoo Security WDV301",
+      },
+      {
+        k: "pick",
+        rank: "05",
+        name: "Cozier Alarme Antivol Vibration Rupture Vitres, Lot de 8",
+        price: "44,99 €",
+        badge: "Idéal pour toute la maison",
+        tone: "good",
+        verdict:
+          "8 unités pour équiper toutes les fenêtres de la maison, avec une sirène puissante de 120 dB pour dissuader avant l'entrée.",
+        pros: ["8 unités pour équiper toutes les fenêtres de la maison", "Sirène puissante 120 dB, idéal pour dissuader avant l'entrée"],
+        cons: ["Qualité de fabrication plus basique qu'une marque spécialisée"],
+        href: "https://www.amazon.fr/dp/B08ZJ92T9F?tag=secure012de-21",
+        image: "/images/products/detecteur-bris-vitre-cozier-8pcs.jpg",
+        imageAlt: "Cozier Alarme Antivol Vibration Rupture Vitres",
+      },
+      {
+        k: "quiz",
+        title: "Pas sûr que la détection soit votre couche la plus faible ?",
         text: "Sept questions notent votre périmètre, votre détection, votre réaction et votre résilience, et vous disent où investir en premier.",
       },
       { k: "h2", text: "Comment on choisit" },

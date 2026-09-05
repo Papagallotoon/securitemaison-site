@@ -39,12 +39,12 @@ function toCard(slug: string): Article {
   };
 }
 
-export const LEAD: Article = toCard("cameras-de-securite-connectees");
+export const LEAD: Article = toCard("caches-prises-securite-enfant");
 
 export const SECONDARY: Article[] = [
+  toCard("cameras-de-securite-connectees"),
+  toCard("coffres-forts-connectes"),
   toCard("serrures-et-alarmes-connectees"),
-  toCard("sonnettes-video-connectees"),
-  toCard("boites-a-cles-connectees"),
 ];
 
 export type Hub = {

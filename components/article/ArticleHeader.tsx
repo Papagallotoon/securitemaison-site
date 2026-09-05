@@ -54,6 +54,21 @@ export function ArticleHeader({ article }: { article: ArticleMeta }) {
         {article.kind === "comparison" && <span>Liens d'affiliation · prix vérifiés sur Amazon.fr</span>}
       </div>
 
+      {article.youtubeUrl && (
+        <a
+          href={article.youtubeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 flex min-h-[48px] w-fit items-center gap-2.5 border px-5 py-3 font-mono text-[11px] uppercase tracking-ops text-white hover:opacity-85"
+          style={{ backgroundColor: category.color }}
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M21.582 6.186a2.75 2.75 0 0 0-1.936-1.945C17.9 3.75 12 3.75 12 3.75s-5.9 0-7.646.491a2.75 2.75 0 0 0-1.936 1.945A28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .418 5.814 2.75 2.75 0 0 0 1.936 1.945C6.1 20.25 12 20.25 12 20.25s5.9 0 7.646-.491a2.75 2.75 0 0 0 1.936-1.945A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.418-5.814ZM9.75 15.5v-7l6 3.5-6 3.5Z" />
+          </svg>
+          Voir le Short YouTube
+        </a>
+      )}
+
       {article.image && (
         <div className="relative mt-7 aspect-[16/9] w-full overflow-hidden rounded-xl border border-brand-200 bg-white shadow-sm">
           <Image
