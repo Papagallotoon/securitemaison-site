@@ -55,14 +55,14 @@ export function ArticleHeader({ article }: { article: ArticleMeta }) {
       </div>
 
       {article.image && (
-        <div className="relative mt-7 aspect-[16/9] w-full border border-brand-200 bg-brand-100">
+        <div className="relative mt-7 aspect-[16/9] w-full overflow-hidden rounded-xl border border-brand-200 bg-white shadow-sm">
           <Image
             src={article.image}
             alt={article.imageAlt ?? ""}
             fill
             priority
             sizes="(min-width: 1024px) 760px, 100vw"
-            className="object-contain p-6"
+            className="object-contain p-3"
           />
         </div>
       )}

@@ -7,11 +7,13 @@
 
 export type LayerKey = "perimeter" | "detection" | "response" | "resilience";
 
+// Mêmes couleurs que CATEGORIES dans content/articles.ts, pour que le
+// diagramme du questionnaire et les rubriques du site restent cohérents.
 export const LAYERS: Record<LayerKey, { name: string; color: string; median: number; weight: number }> = {
-  perimeter: { name: "Périmètre", color: "#1F7E8C", median: 58, weight: 0.3 },
-  detection: { name: "Détection", color: "#0E7C6E", median: 64, weight: 0.3 },
-  response: { name: "Réaction", color: "#147F60", median: 41, weight: 0.22 },
-  resilience: { name: "Résilience", color: "#2C6C8B", median: 33, weight: 0.18 },
+  perimeter: { name: "Périmètre", color: "#3B6FA0", median: 58, weight: 0.3 },
+  detection: { name: "Détection", color: "#B8863D", median: 64, weight: 0.3 },
+  response: { name: "Réaction", color: "#B2542F", median: 41, weight: 0.22 },
+  resilience: { name: "Résilience", color: "#6B5B95", median: 33, weight: 0.18 },
 };
 
 export type Question = {

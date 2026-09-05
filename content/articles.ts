@@ -17,29 +17,33 @@ export type Category = {
   blurb: string;
 };
 
+// Quatre teintes volontairement eloignees les unes des autres (pas des
+// nuances d'une meme famille turquoise) et distinctes de l'accent
+// generique brand-600 utilise pour les boutons/CTA du site — sinon la
+// couleur de categorie se fond dans le reste de l'interface.
 export const CATEGORIES: Record<string, Category> = {
   perimeter: {
     slug: "perimeter",
     label: "Périmètre",
-    color: "#1F7E8C",
+    color: "#3B6FA0",
     blurb: "Portes, serrures, fenêtres, garage. La couche qui décide si entrer demande des outils.",
   },
   detection: {
     slug: "detection",
     label: "Détection",
-    color: "#0E7C6E",
+    color: "#B8863D",
     blurb: "Caméras, sonnettes, détecteurs. Ce qui vous dit que ça se passe, et le prouve après coup.",
   },
   response: {
     slug: "response",
     label: "Réaction",
-    color: "#147F60",
+    color: "#B2542F",
     blurb: "Qui agit, à quelle vitesse, et ce que vous faites dans les 90 premières secondes.",
   },
   resilience: {
     slug: "resilience",
     label: "Résilience",
-    color: "#2C6C8B",
+    color: "#6B5B95",
     blurb: "Ce qui continue de fonctionner quand l'électricité ou internet s'arrêtent.",
   },
 };

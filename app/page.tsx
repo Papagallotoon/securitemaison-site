@@ -28,19 +28,24 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-start gap-[clamp(24px,3vw,40px)] lg:grid-cols-2">
           <article className="min-w-0">
             {LEAD.image && (
-              <div className="relative aspect-[16/10] w-full border border-brand-200 bg-brand-100">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-brand-200 bg-white shadow-sm">
                 <Image
                   src={LEAD.image}
                   alt={LEAD.imageAlt ?? ""}
                   fill
                   priority
                   sizes="(min-width: 1024px) 580px, 100vw"
-                  className="object-contain p-6"
+                  className="object-contain p-3"
                 />
               </div>
             )}
             <div className="mt-4 flex items-center gap-3 font-mono text-[10px] uppercase tracking-ops">
-              <span className="bg-brand-600 px-2 py-1 text-white">{LEAD.kicker}</span>
+              <span
+                className="px-2 py-1 text-white"
+                style={{ backgroundColor: CATEGORIES[LEAD.category]!.color }}
+              >
+                {LEAD.kicker}
+              </span>
               <span className="text-brand-500">{LEAD.meta}</span>
             </div>
             <h2 className="mt-3.5 font-condensed text-[clamp(30px,5.2vw,46px)] font-extrabold uppercase leading-[0.96] text-brand-950 [text-wrap:balance]">
@@ -59,13 +64,13 @@ export default function HomePage() {
                 {index > 0 && <div className="h-px bg-brand-200" />}
                 <article className="grid grid-cols-[104px_1fr] items-start gap-4">
                   {article.image && (
-                    <div className="relative aspect-square border border-brand-200 bg-brand-100">
+                    <div className="relative aspect-square overflow-hidden rounded-lg border border-brand-200 bg-white shadow-sm">
                       <Image
                         src={article.image}
                         alt={article.imageAlt ?? ""}
                         fill
                         sizes="104px"
-                        className="object-contain p-1.5"
+                        className="object-contain p-1"
                       />
                     </div>
                   )}
@@ -105,7 +110,8 @@ export default function HomePage() {
             <Link
               key={hub.title}
               href={hub.href}
-              className="block bg-brand-100 px-[22px] pb-[26px] pt-6 text-inherit shadow-[0_0_0_1px_rgb(var(--brand-200))] hover:bg-brand-200/60"
+              className="block bg-brand-100 px-[22px] pb-[26px] pt-5 text-inherit shadow-[0_0_0_1px_rgb(var(--brand-200))] hover:bg-brand-200/60"
+              style={{ borderTop: `3px solid ${CATEGORIES[hub.category]!.color}` }}
             >
               <div
                 className="font-mono text-[11px] tracking-ops"
@@ -113,7 +119,10 @@ export default function HomePage() {
               >
                 {hub.index}
               </div>
-              <h3 className="mt-3 font-condensed text-[24px] font-bold uppercase text-brand-900">
+              <h3
+                className="mt-3 font-condensed text-[24px] font-bold uppercase"
+                style={{ color: CATEGORIES[hub.category]!.color }}
+              >
                 {hub.title}
               </h3>
               <p className="mt-2 font-serif text-[15px] leading-[1.55] text-brand-700">

@@ -5,6 +5,7 @@ import { hexToRgbChannels } from "@/lib/color";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnalyticsScripts } from "@/components/layout/AnalyticsScripts";
+import { CookieConsent } from "@/components/layout/CookieConsent";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <AnalyticsScripts />
+        <CookieConsent />
       </body>
     </html>
   );

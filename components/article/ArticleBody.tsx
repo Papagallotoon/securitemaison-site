@@ -12,13 +12,17 @@ import { resolveVideoEmbed } from "@/lib/video";
 
 const PROSE = "mt-6 max-w-[68ch] font-serif text-[19px] leading-[1.72] text-brand-800";
 const H2 =
-  "mt-14 border-b border-brand-300 pb-3.5 font-condensed text-[clamp(24px,3.4vw,32px)] font-extrabold uppercase tracking-[0.02em] text-brand-950";
+  "mt-14 border-b-2 pb-3.5 font-condensed text-[clamp(24px,3.4vw,32px)] font-extrabold uppercase tracking-[0.02em] text-brand-950";
 
 function figureLabel(i: number) {
   return `Fig. ${String.fromCharCode(64 + i)}`;
 }
 
-export function ArticleBody({ blocks }: { blocks: Block[] }) {
+// La couleur de catégorie de l'article (passée par ArticleHeader/la page)
+// accentue les titres, le prix et le liseré des fiches produit — c'est ce
+// qui rend chaque rubrique visuellement reconnaissable, plutôt que le
+// turquoise générique partout.
+export function ArticleBody({ blocks, categoryColor }: { blocks: Block[]; categoryColor: string }) {
   let figures = 0;
 
   return (
@@ -34,7 +38,7 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
 
           case "h2":
             return (
-              <h2 key={i} className={H2}>
+              <h2 key={i} className={H2} style={{ borderColor: categoryColor }}>
                 {block.text}
               </h2>
             );
@@ -141,6 +145,7 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
               <div
                 key={i}
                 className="my-6 bg-brand-100 p-[26px] shadow-[0_0_0_1px_rgb(var(--brand-300))]"
+                style={{ borderLeft: `4px solid ${categoryColor}` }}
               >
                 <div className="flex flex-wrap items-baseline gap-3.5">
                   <span
@@ -166,13 +171,13 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                     </p>
                   </div>
                   {block.image && (
-                    <div className="relative order-first aspect-square w-full border border-brand-200 bg-brand-50 sm:order-none">
+                    <div className="relative order-first aspect-square w-full overflow-hidden rounded-lg border border-brand-200 bg-white shadow-sm sm:order-none">
                       <Image
                         src={block.image}
                         alt={block.imageAlt ?? block.name}
                         fill
                         sizes="150px"
-                        className="object-contain p-2"
+                        className="object-contain p-1"
                       />
                     </div>
                   )}
@@ -202,13 +207,17 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                   </ul>
                 </div>
                 <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-brand-200 pt-4">
-                  <span className="font-condensed text-[24px] font-extrabold uppercase text-brand-950">
+                  <span
+                    className="font-condensed text-[30px] font-extrabold uppercase"
+                    style={{ color: categoryColor }}
+                  >
                     {block.price}
                   </span>
                   <a
                     href={block.href}
                     rel="nofollow sponsored"
-                    className="flex min-h-[46px] items-center border border-brand-600 px-[18px] py-3 font-mono text-[10px] uppercase tracking-ops text-brand-600 hover:bg-brand-600 hover:text-white"
+                    className="flex min-h-[46px] items-center text-white px-[18px] py-3 font-mono text-[10px] uppercase tracking-ops hover:opacity-85"
+                    style={{ backgroundColor: categoryColor }}
                   >
                     Voir le prix
                   </a>

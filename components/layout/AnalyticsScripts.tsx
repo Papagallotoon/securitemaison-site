@@ -1,10 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Script from "next/script";
 import { analyticsEnv } from "@/lib/analytics";
+import { CONSENT_EVENT, getStoredConsent } from "@/lib/consent";
 
-/** Loads GA4/PostHog only if the corresponding env key is set. No-op otherwise. */
+/** Loads GA4/PostHog only if the corresponding env key is set AND the
+ * visitor has accepted cookies via the consent banner. Reacts live to the
+ * banner's choice, no page reload needed. */
 export function AnalyticsScripts() {
+  const [consented, setConsented] = useState(false);
+
+  useEffect(() => {
+    setConsented(getStoredConsent() === "accepted");
+    function onChange(event: Event) {
+      setConsented((event as CustomEvent<string>).detail === "accepted");
+    }
+    window.addEventListener(CONSENT_EVENT, onChange);
+    return () => window.removeEventListener(CONSENT_EVENT, onChange);
+  }, []);
+
+  if (!consented) return null;
+
   return (
     <>
       {analyticsEnv.hasGA && (

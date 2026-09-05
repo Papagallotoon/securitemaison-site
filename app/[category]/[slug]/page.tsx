@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ARTICLES, getArticle, relatedArticles } from "@/content/articles";
+import { ARTICLES, CATEGORIES, getArticle, relatedArticles } from "@/content/articles";
 import { ArticleHeader } from "@/components/article/ArticleHeader";
 import { ArticleBody } from "@/components/article/ArticleBody";
 import { ArticleRow } from "@/components/article/ArticleRow";
@@ -32,7 +32,7 @@ export default function ArticlePage({ params }: { params: { category: string; sl
   return (
     <article className="mx-auto max-w-[760px] px-4 pb-20 pt-[clamp(28px,5vw,52px)] sm:px-7">
       <ArticleHeader article={article} />
-      <ArticleBody blocks={article.blocks} />
+      <ArticleBody blocks={article.blocks} categoryColor={CATEGORIES[article.category]!.color} />
 
       {related.length > 0 && (
         <section className="mt-16 border-t border-brand-300 pt-8">
