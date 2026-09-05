@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
+  verification: {
+    google: "6E3ySLmx5JUGjNHMLAW-V4P_dmJepMMUSNRl515gJIw",
+  },
 };
 
 // Chaque niche définit sa propre palette (config/niches/<niche>/site.ts).
