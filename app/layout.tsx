@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
   verification: {
-    google: "6E3ySLmx5JUGjNHMLAW-V4P_dmJepMMUSNRl515gJIw",
+    google: "DuJnDJQobYl-c98xZa1kaBlfP7QsXlUeNsSwliQ4wT8",
   },
 };
 
