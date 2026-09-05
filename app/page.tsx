@@ -9,7 +9,6 @@ import {
   LATEST,
   LEAD,
   SECONDARY,
-  type Article,
 } from "@/content/editorial";
 
 export const metadata: Metadata = {
@@ -21,11 +20,6 @@ const SECTION = "mx-auto max-w-[1200px] px-4 sm:px-7";
 const RULE = "flex items-baseline justify-between gap-4 border-b border-brand-300 pb-3.5";
 const HEADING = "m-0 font-condensed text-[clamp(22px,3vw,28px)] font-extrabold uppercase tracking-[0.03em] text-brand-950";
 
-// Les prises tirées en clé sombre demandent un filtre plus fort.
-function shotClass(article: Article) {
-  return article.imageDark ? "editorial-shot-dark" : "editorial-shot";
-}
-
 export default function HomePage() {
   return (
     <div className="pb-16">
@@ -34,14 +28,14 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-start gap-[clamp(24px,3vw,40px)] lg:grid-cols-2">
           <article className="min-w-0">
             {LEAD.image && (
-              <div className="relative aspect-[16/10] w-full border border-brand-200">
+              <div className="relative aspect-[16/10] w-full border border-brand-200 bg-brand-100">
                 <Image
                   src={LEAD.image}
                   alt={LEAD.imageAlt ?? ""}
                   fill
                   priority
                   sizes="(min-width: 1024px) 580px, 100vw"
-                  className={`object-cover ${shotClass(LEAD)}`}
+                  className="object-contain p-6"
                 />
               </div>
             )}
@@ -65,13 +59,13 @@ export default function HomePage() {
                 {index > 0 && <div className="h-px bg-brand-200" />}
                 <article className="grid grid-cols-[104px_1fr] items-start gap-4">
                   {article.image && (
-                    <div className="relative aspect-square border border-brand-200">
+                    <div className="relative aspect-square border border-brand-200 bg-brand-100">
                       <Image
                         src={article.image}
                         alt={article.imageAlt ?? ""}
                         fill
                         sizes="104px"
-                        className={`object-cover ${shotClass(article)}`}
+                        className="object-contain p-1.5"
                       />
                     </div>
                   )}

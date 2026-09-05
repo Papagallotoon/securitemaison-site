@@ -68,7 +68,8 @@ export type Block =
   | { k: "callout"; title: string; text: string }
   | { k: "steps"; title?: string; items: { title: string; text: string }[] }
   | { k: "quiz"; title: string; text: string }
-  | { k: "method"; items: string[] };
+  | { k: "method"; items: string[] }
+  | { k: "video"; url: string; caption: string };
 
 export type BarItem = { label: string; value: number; display: string; tone: Tone };
 export type Point = { label: string; x: number; y: number; tone: Tone };
@@ -486,6 +487,11 @@ export const ARTICLES: ArticleMeta[] = [
         imageAlt: "Nuki Smart Lock Pro 4ème génération",
       },
       {
+        k: "video",
+        url: "https://www.youtube.com/watch?v=203xoabCvOs",
+        caption: "Installation de la Nuki Smart Lock Pro — vidéo officielle Nuki",
+      },
+      {
         k: "pick",
         rank: "02",
         name: "Aqara Serrure de Porte U100",
@@ -598,6 +604,11 @@ export const ARTICLES: ArticleMeta[] = [
         href: "https://www.amazon.fr/dp/B0931VRJT5?tag=secure012de-21",
         image: "/images/products/ring-video-doorbell.jpg",
         imageAlt: "Ring Video Doorbell sans fil 2ème génération",
+      },
+      {
+        k: "video",
+        url: "https://www.youtube.com/watch?v=vl8sZI5AH4g",
+        caption: "Fonctionnement de la sonnette vidéo Ring — vidéo officielle Ring",
       },
       {
         k: "pick",

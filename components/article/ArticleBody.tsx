@@ -4,6 +4,7 @@ import { TONE, type Block } from "@/content/articles";
 import { Bars } from "@/components/charts/Bars";
 import { Scatter } from "@/components/charts/Scatter";
 import { Split } from "@/components/charts/Split";
+import { resolveVideoEmbed } from "@/lib/video";
 
 // Rend le corps d'un article depuis la liste de blocs typés du registre.
 // Les figures sont numérotées automatiquement dans l'ordre d'apparition, comme
@@ -165,13 +166,13 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                     </p>
                   </div>
                   {block.image && (
-                    <div className="relative order-first aspect-square w-full border border-brand-200 sm:order-none">
+                    <div className="relative order-first aspect-square w-full border border-brand-200 bg-brand-50 sm:order-none">
                       <Image
                         src={block.image}
                         alt={block.imageAlt ?? block.name}
                         fill
                         sizes="150px"
-                        className={`object-cover ${block.imageDark ? "editorial-shot-dark" : "editorial-shot"}`}
+                        className="object-contain p-2"
                       />
                     </div>
                   )}
@@ -209,7 +210,7 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                     rel="nofollow sponsored"
                     className="flex min-h-[46px] items-center border border-brand-600 px-[18px] py-3 font-mono text-[10px] uppercase tracking-ops text-brand-600 hover:bg-brand-600 hover:text-white"
                   >
-                    Check price
+                    Voir le prix
                   </a>
                 </div>
               </div>
@@ -266,7 +267,7 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
               >
                 <div className="min-w-0 flex-1 basis-[280px]">
                   <div className="font-mono text-[10px] uppercase tracking-ops text-brand-600">
-                    Free assessment
+                    Évaluation gratuite
                   </div>
                   <h3 className="mt-2.5 font-condensed text-[25px] font-extrabold uppercase leading-[1.04] text-brand-950">
                     {block.title}
@@ -279,7 +280,7 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                   href="/assessment"
                   className="clip-bevel flex min-h-[48px] items-center bg-brand-600 px-6 py-3.5 font-condensed text-[17px] font-extrabold uppercase tracking-[0.06em] text-white hover:bg-brand-600/85"
                 >
-                  Score my home
+                  Évaluer ma maison
                 </Link>
               </div>
             );
@@ -298,6 +299,33 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                 ))}
               </ul>
             );
+
+          case "video": {
+            const video = resolveVideoEmbed(block.url);
+            if (!video) return null;
+            return (
+              <figure key={i} className="my-9">
+                <div className="aspect-video w-full overflow-hidden border border-brand-200 bg-black">
+                  {video.kind === "iframe" ? (
+                    <iframe
+                      src={video.src}
+                      title={block.caption}
+                      className="h-full w-full"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    // eslint-disable-next-line jsx-a11y/media-has-caption
+                    <video src={video.src} controls className="h-full w-full" preload="metadata" />
+                  )}
+                </div>
+                <figcaption className="mt-2.5 font-mono text-[10px] uppercase tracking-ops text-brand-500">
+                  {block.caption}
+                </figcaption>
+              </figure>
+            );
+          }
         }
       })}
     </div>
