@@ -7,7 +7,7 @@ export const SITE: SiteConfig = {
     "Un indice de préparation de votre maison face à une coupure de 72 heures — en 60 secondes.",
   niche: "sécurité domestique",
   locale: "fr",
-  domain: "securitemaison.example.com",
+  domain: "securitemaison-site.vercel.app",
   analytics: { gaMeasurementId: "G-6WW78QXRLW" },
   // Même palette "Tactical" que readyscore (kaki + turquoise foncé) — la
   // marque visuelle reste cohérente, seul le contenu change de langue.

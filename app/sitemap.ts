@@ -4,7 +4,7 @@ import { ARTICLES, CATEGORY_ORDER, articleHref } from "@/content/articles";
 // Sitemap dérivé du registre : un article ajouté à content/articles.ts y entre
 // sans intervention. NEXT_PUBLIC_SITE_URL sur Vercel, sinon le domaine par
 // défaut.
-const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://home-secure.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://securitemaison-site.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
