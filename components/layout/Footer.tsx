@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { SITE } from "@/config/active";
 
+// Portfolio du même éditeur (Papagallotoon) : liens croisés entre les trois
+// sites, présents à l'identique (à l'URL courante près) dans le footer de
+// chacun.
+const OTHER_SITES = [
+  { label: "Marius Dumas Home — déco", href: "https://marius-home.com" },
+  { label: "Surfcasting Pêche du Bord — pêche", href: "https://surfcastingpechedubord.vercel.app" },
+];
+
 export function Footer() {
   return (
     <footer className="relative z-10 border-t border-brand-200 py-8">
@@ -14,6 +22,16 @@ export function Footer() {
               {link.label}
             </Link>
           ))}
+        </div>
+        <div className="mt-5 border-t border-brand-200 pt-4">
+          <div className="font-mono text-[10px] uppercase tracking-ops text-brand-400">Nos autres sites</div>
+          <div className="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[11px] uppercase tracking-ops text-brand-500">
+            {OTHER_SITES.map((site) => (
+              <a key={site.href} href={site.href} className="hover:text-brand-600">
+                {site.label}
+              </a>
+            ))}
+          </div>
         </div>
         <p className="mt-4 font-mono text-[10px] uppercase tracking-ops text-brand-400">
           © {new Date().getFullYear()} {SITE.siteName} — {SITE.legal.footerNote}
