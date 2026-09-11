@@ -52,9 +52,15 @@ export const CATEGORIES: Record<string, Category> = {
     color: "#C2477A",
     blurb: "Prises, angles, tiroirs. Empêcher les petits accidents avant qu'ils n'arrivent.",
   },
+  guides: {
+    slug: "guides",
+    label: "Ressources",
+    color: "#2E7D5B",
+    blurb: "Livres et lectures pour comprendre les sujets de sécurité en profondeur, au-delà du matériel.",
+  },
 };
 
-export const CATEGORY_ORDER = ["perimeter", "detection", "response", "resilience", "family"] as const;
+export const CATEGORY_ORDER = ["perimeter", "detection", "response", "resilience", "family", "guides"] as const;
 
 export type CategoryKey = keyof typeof CATEGORIES;
 
