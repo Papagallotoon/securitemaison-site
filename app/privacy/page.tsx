@@ -41,6 +41,25 @@ export default function PrivacyPage() {
         Digistore24 pour certains produits.
       </p>
 
+      <h2 className="mt-8 text-lg font-semibold text-brand-950">Publication sur TikTok</h2>
+      <p className="mt-2">
+        Nous utilisons l'API TikTok (Content Posting API) pour publier
+        automatiquement nos vidéos courtes sur notre compte TikTok officiel.
+        Seuls le fichier vidéo, le titre et la légende que nous produisons
+        sont transmis à TikTok à cette fin — aucune donnée personnelle des
+        visiteurs de ce site n'est partagée avec TikTok. L'utilisation de
+        cette intégration est soumise à la{" "}
+        <a
+          href="https://www.tiktok.com/legal/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          politique de confidentialité de TikTok
+        </a>
+        .
+      </p>
+
       <h2 className="mt-8 text-lg font-semibold text-brand-950">Vos choix</h2>
       <p className="mt-2">
         Vous pouvez utiliser ce site sans fournir d'information personnelle
